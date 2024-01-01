@@ -9,21 +9,86 @@ import java.util.Random;
  */
 public class OneOfEachStats {
 	public static void main (String[] args) {
-		// Gets the two command-line arguments
-		int T = Integer.parseInt(args[0]);
-		int seed = Integer.parseInt(args[1]);
-		// Initailizes a random numbers generator with the given seed value
-        Random generator = new Random(seed);  
-		
-		//// In the previous version of this program, you used a statement like:
-		//// double rnd = Math.random();
-		//// Where "rnd" is the variable that stores the generated random value.
-		//// In this version of the program, replace this statement with:
-		//// double rnd = generator.nextDouble();
-		//// This statement will generate a random value in the range [0,1),
-		//// just like you had in the previous version, except that the 
-		//// randomization will be based on the given seed.
-		//// This is the only change that you have to do in the program.
+        double t = Double.parseDouble(args[0]);
+        int x;
+        int seed=Integer.parseInt(args[0]);
+        Random generator = new Random(seed);
+        int sum;
+        double total=0.0;
+        int two=0;
+        int three=0;
+        int four=0;
+        boolean y;
+        String a;
+        for(int i=0;i<=t;i++)
+        {
+            x= generator.nextInt();
+            sum=1;
+            y = false;
+            a="";
+            if(x<5)
+            {
+                a="g ";
+                while (y==false) 
+                {
+                    x=generator.nextInt();
+                    if(x<5)
+                        {
+                            a+= "g ";
+                            sum++;
+                        }
+                    else
+                        {
+                            a+= "b ";
+                            y=true;
+                            sum++;
+                        }
+                
+                }
+            }
+            else
+            {
+                a="b ";
+                while (y==false) 
+                    {
+                        x=generator.nextInt();
+                        if(x<5)
+                            {
+                                a+= "g ";
+                                y=true;
+                                sum++;
+                            }
+                        else
+                            {
+                                a+= "b ";
+                                sum++;
+                            }
+                    }
+            }
+            total+=sum;
+            if(sum==2)
+            {
+                two++;
+            }
+            else if(sum==3)
+            {
+                three++;
+            }
+            else four++;
+        }   
+        System.out.println("Average: "+(total/t)+" children to get at least one of each gender.");
+        System.out.println("Number of families with 2 children: "+two);
+        System.out.println("Number of families with 3 children: "+three);
+        System.out.println("Number of families with 4 or more children: "+four);
+        if ((two>three)&&(two>four))
+        {
+            System.out.println("The most common number of children is: 2");
+        }
+        else if(three>four)
+        {
+            System.out.println("The most common number of children is: 3");
+        }
+        else System.out.println("The most common number of children is: 4"); 
 		    
 	}
 }
