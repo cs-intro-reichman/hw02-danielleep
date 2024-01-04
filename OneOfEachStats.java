@@ -11,7 +11,7 @@ public class OneOfEachStats {
 	public static void main (String[] args) {
         double t = Double.parseDouble(args[0]);
         int x;
-        int seed=Integer.parseInt(args[0]);
+        int seed=Integer.parseInt(args[1]);
         Random generator = new Random(seed);
         int sum;
         double total=0.0;
